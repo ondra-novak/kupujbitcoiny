@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Couchblog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+<body onload="start();">
+<script src="pouchdb-6.2.0.min.js" type="text/javascript"></script>
+<script src="pouchdb.authentication.min.js" type="text/javascript"></script>
+<script src="code.js" type="text/javascript"></script>
+
+<div class="header"></div>
+
+<div class="bodypart">
+<div class="content">
+<div class="article" id="artView" hidden="1">
+<div class="panel"><button id="buttGoEdit">Upravit</button><button id="buttGoNew">Nový</button></div>
+<div class="title">
+<H2 id="artTitle">$(title)</H2>
+</div>
+<div class="artPublishInfo">
+<div id="artAuthor">$(author)</div>
+<div id="artDatetimeCreated">$(datetime)</div>
+<div id="artDatetimeUpdated">$(datetime)</div>
+</div>
+<div id="artText">$(text)</div>
+</div>
+
+<div class="articleedit" id="artEdit">
+<div class="title">
+Nadpis: <input id="artTitleEdit" type="text" value="$(title)">
+</div>
+<div class="htmleditor" id="artTextEdit"></div>
+<div class="attachments" id="attachments">
+<div id="attchHead">Přílohy</div>
+<div id="attchPanel">
+	<button class="selAll">[X]</button>
+	<button class="delete">Smazat</button>
+	<button class="thumb">Vytvořit náhled</button>
+	<button class="unthumb">Smazat náhled</button>
+	<button class="addGal">Přidat do galerie</button>
+	<button class="delGal">Vyjmout z galerie</button>
+</div>
+<table>
+<tbody id="attchList">
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="navigation">
+$(navigation)
+</div>
+
+</div>
+<div class="loginDlg" hidden="1">
+<div class="lightbox"></div>
+<div class="inner">
+<label>Uživatelské jméno: <input type="text" class="loginUser"></label>
+<label>Heslo: <input type="password" class="loginPassword"></label>
+<button class="loginAction">Přihlásit se</button>
+<button class="loginCancel">Storno</button>
+</div>
+</div>
+<div class="attachDlg" hidden="1">
+<label>Vyberte jeden i více souborů: <input type="file" class="attachFiles" multiple></label>
+<button class="attachCancel">Storno</button>
+</div>
+</body>
+</html>

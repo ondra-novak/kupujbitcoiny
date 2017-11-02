@@ -1,0 +1,77 @@
+body {
+	   box-sizing: border-box;
+}
+
+div.content {
+	margin-right:26%;
+	background-color: #DDDDCC;
+}
+
+div.navigation {
+	position:absolute;
+	right:0;
+	top:0;
+	width: 25%;
+}
+
+div.bodypart {
+	position:relative;
+	background-color: #AAAADD;
+}
+
+div.header {
+	height: 10em;	
+}
+
+@media only screen and (max-width: 500px) {
+	div.content {
+		margin-right:0px;
+	}
+	div.navigation {
+		position:relative;
+		width: auto;
+	}
+	
+}
+
+div.articleedit {
+	
+	padding: 10px;
+}
+
+div.htmleditor div.content {
+	min-height: 10em;
+	border: 1px solid;
+	width: 100%;
+	padding: 5px;
+	background-color: #EEE;	
+	box-sizing: border-box;
+}
+
+div.loginDlg {
+	position:fixed;
+	left:0;
+	top:0;
+	width: 100vw;
+	height: 100vh;
+}
+
+div.lightbox {
+	left:0;
+	top:0;
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	opacity: 0.3;
+}
+
+div.inner {
+	position:absolute;
+	top: 20%;
+	left: 50%;
+	width: 300px;
+	background-color: #EED;
+	margin-left: -150px;
+	padding: 5px;
+	
+}
