@@ -1,0 +1,136 @@
+body {
+	background-image: url("../img/bg.jpg");
+	background-size: 100vw 100vh;
+	color:#CCF;
+	font-family: sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+div#content {
+	
+	position:absolute;
+	top: 20vh;
+	height: 70vh;
+	width: 100vw;	
+	padding-left:20vw;
+	padding-right:20vw;
+	overflow: scroll;
+	box-sizing: border-box;
+}
+
+
+div#header  {
+	margin-left:10px;
+	margin-right:10px;
+	
+}
+
+div#header div a {
+	color: #CCF;
+	text-decoration: none;
+		
+}
+div#header div.invbtn {
+	background-color: #CCF;
+	color: black;	
+	text-align:center;	
+}
+
+div#header div.invbtn a {
+	color: black;
+}
+
+ div.leftbtn {
+	float: left;
+	margin-top: 5px;
+	padding: 2px;
+	width: 7em;
+	
+}
+
+div.rightbtn {
+	float: right;
+	margin-top: 5px;
+	padding: 2px;	
+	width: 5em;
+}
+div.emailtop {
+	float: right;
+	margin-top: 5px;
+	padding: 2px;
+	text-align:right;		
+}
+a.btnreg {
+	
+	display:block;
+	margin-top:40px;
+	margin-left:auto;
+	margin-right: auto;
+	padding: 10px;
+	background: #CCF;
+	color: black;
+	text-align: center;
+	text-decoration: none;
+	width: 200px;
+	border: 2px outset;
+	border-radius: 10px;
+
+}
+div.hp {
+	text-align: center;
+}
+div.hp ul {
+	margin: 0;
+	padding: 0;
+}
+div.hp li {
+	margin-bottom: 5px;
+}
+
+div.logpage {
+	text-align: center;
+}
+div.loginform {
+	font-size: larger;
+	margin-top: 10vw;
+}
+div.loginform input {
+	width: 100%;
+	box-sizing: border-box;
+	max-width: 500px;
+	text-align: center;
+	font-size: larger;
+	font-weight: bold;
+}
+
+div.loginform button {
+	font-size: larger;
+	font-weight: bold;
+	
+} 
+
+@media only screen and (max-width: 400px) {
+	div#content {
+		
+		padding-left:5px;
+		padding-right:5px;
+		
+	}
+
+
+}
+
+@media only screen and (max-height: 400px) {
+	div#content {
+		
+		clear:both;
+		top: 50px;
+		height: auto;
+		position: relative;
+		top: 0;
+		
+	}
+
+
+}

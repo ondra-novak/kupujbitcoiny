@@ -1,38 +1,38 @@
-function HttpIOGen(method, url, data, hdrs, codes) {
+function HttpIOGen(method, url, data, codes, hdrs) {
 	return new Promise(function(ok,error){
 		
-		if (typeof codes == "undefined") codes = [200];
-		if (typeof hdrs == "undefined") hdrs = "text/plain";
-		if (typeof hdrs == "string") hdrs = {"Content-Type":hdrs};
+		if (codes == null) codes = [200,201,202,203,204];
+		if (codes == null) hdrs = "text/plain";
+		if (typeof hdrs == "string" || codes == null) hdrs = {"Content-Type":hdrs};
 
 		
 		var ldr = new XMLHttpRequest;
 		ldr.open(method,url);
 		for (k in hdrs) ldr.setRequestHeader(k,hdrs[k]);
-		ldr.onreadystatechange =function() {
+		ldr.onreadystatechange = function() {
 			 if(ldr.readyState === XMLHttpRequest.DONE) {
 				 if (codes.indexOf(ldr.status) != -1) {
-					 ok(ldr.responseText, ldr.status);
+					 ok(ldr.responseText, ldr.status, ldr);
 				 } else {
 					 error(ldr.status, ldr);
 				 }
 			 }
 		};
-		if (data!=null) ldr.send(data);else ldr.send();		
+		if (data != null) ldr.send(data);else ldr.send();		
 	});
 	
 }
 
-function GET(url, headers, codes) {
+function GET(url, codes, headers) {
 	return HttpIOGen("GET", url, null, headers, codes);	
 }
 
-function PUT(url, data, headers, codes) {
+function PUT(url, data, codes, headers) {
 	return HttpIOGen("PUT", url, data, headers, codes);	
 }
-function POST(url, data, headers, codes) {
+function POST(url, data, codes, headers) {
 	return HttpIOGen("POST", url, data, headers, codes);	
 }
-function DELETE(url, headers, codes) {
+function DELETE(url, codes, headers) {
 	return HttpIOGen("DELETE", url, null, headers, codes);	
 }

@@ -27,42 +27,51 @@ function App(content) {
 		this.router(parseHash());
 	}.bind(this));
 	
-	this.router(parseHash());
 	this.pageCache = {};
 	
 
 	
 };
 
-App.prototype.router = function(query) {
-	
-	this.content.innerHTML = JSON.stringify(query," ");
-	
-};
 
-App.prototype.loadPage = function(page, entryPoint, data) {
+App.prototype.loadPage = function(page, data) {
 	
 	if (this.pageCache[page]) {
-		var page = this.pageCache[page];
-		if (data) page = Mustache.render(page,data);
-		this.content.innerHTML = page;
-		entryPoint(this.content, data);
+		return new Promise(function(ok,cancel) {
+			var p = this.pageCache[page];
+			if (data) p = Mustache.render(p,data);
+			this.content.innerHTML = p;
+			ok(this.content);
+		}.bind(this));		
+	} else {
+		return GET("templates/"+page+".html").then(function(txt) {
+			this.pageCache[page] = txt;
+			return this.loadPage(page, data);
+		}.bind(this));
 	}
-	
-	var ldr = new XMLHttpRequest;
-	ldr.open("GET","templates/"+page+".html");
-	ldr.onreadystatechange =function() {
-		 if(ldr.readyState === XMLHttpRequest.DONE && ldr.status === 200) {
-			 this.pageCache[page] = ldr.responseText;
-			 this.loadPage(page,entryPoint,data);
-		 }
-	}.bind(this);
-	ldr.send();
-}
+};
+
+App.prototype.showErrors=function(element, errClass) {
+	var elm = element.getElementsByClassName(errClass);
+	var l = elm.length;
+	var i;
+	for (i = 0; i < l; i++) {
+		elm[i].hidden = false;
+	}
+};
+
+App.prototype.hideErrors=function(element) {
+	var elm = element.getElementsByClassName("error");
+	var l = elm.length;
+	var i;
+	for (i = 0; i < l; i++) {
+		elm[i].hidden = true;
+	}
+};
 
 
 function start() {
 
 	window.theApp = new App(document.getElementById("content"));
-	
+	window.theApp.router(parseHash());
 };
