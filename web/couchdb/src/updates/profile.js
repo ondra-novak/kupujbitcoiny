@@ -1,9 +1,7 @@
 function(doc, httpreq){
 	
 	
-	var sha256 = require('views/lib/sha256').sha256;
-	var base64 = require('views/lib/base64').base64;
-	var salt = require('views/lib/salt').key;
+	var getProfileID = require('views/lib/profileid').getProfileID;
 	var Validator = require('views/lib/validateFields').FieldValidator;
 	var req = JSON.parse(httpreq.body);
 	var errors = null;
@@ -16,14 +14,13 @@ function(doc, httpreq){
 		if (page == "register") {
 			
 			email = req.email;
-			hash = sha256.hmac.create(salt);
-			hash.update(email);
-			docid = base64(hash.array(),true).substr(0,43);
+			docid = getProfileID(email);
 			if (docid != httpreq.id) {
 				return [null, {code:403,json:{"error":"UserID doesn't match"}}];
 			}
 			doc = {
 					_id: httpreq.id,
+					class:"profile",
 					email: email,
 					stat_id: httpreq.uuid,
 					chkcode: Math.round(Math.random()*1000000)
