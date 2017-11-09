@@ -7,7 +7,7 @@ App.prototype.router = function(query) {
 	} else {
 		p = query.page;
 	}
-	this.loadPage(p).then(this["control_"+p].bind(this));
+	this.loadPage(p,null,"top").then(this["control_"+p].bind(this));
 };
 
 App.prototype.control_home = function(ctx) {
@@ -45,8 +45,8 @@ App.prototype.doReg = function() {
 			var but = document.querySelector("#regbutton");
 			but.disabled=true;
 			POST("/db/update/sendmail",JSON.stringify(req))
-				.then(this.loadPage.bind(this,"login_email_sent",req)
-					 ,this.loadPage.bind(this,"error"));
+				.then(this.loadPage.bind(this,"login_email_sent",req,"top")
+					 ,this.loadPage.bind(this,"error",null,"bottom"));
 		}
 	}
 	

@@ -1,0 +1,20 @@
+<div class="amlform1" hidden="true">
+<h2>Osoba</h2>
+<h2>Kontantní údaje</h2>
+
+<label>Telefon: <input type="text" id="ftel" value="{{tel}}"/></label>
+<label>E-mail: <input type="text" id="ftel" value="{{email}}" readonly="readonly"/></label>
+<h2>Platební údaje</h2>
+
+<label>Bankovní účet: <input type="text" id="fbankacc" value="{{bankacc}}"/></label>
+<div class="formnote">(české bankovní účty uvádějte jako XXXXXXXXX/BBBB, kde XXX je číslo účtu a BBBB kód banky)</div>
+<h2>Jiné údaje</h2>
+<label>Jsem politicky exponovaná osoba:<br>(Vztahuje se i na rodinné příslušníky) <input type="checkbox" #id="fpolitik" value="{{politik}}"/></label>
+<br>
+<label>Zastupuji třetí osobu (nebo osoby): <input type="checkbox" #id="fbroker" value="{{broker}}"/></label>
+
+
+<div class="bottomnav">
+<button id="bback">&lt;&lt; Zpět</button><button id="bnext">Další &gt;&gt;</button>
+</div>
+</div>

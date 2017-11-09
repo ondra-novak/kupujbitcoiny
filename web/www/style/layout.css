@@ -7,7 +7,7 @@ body {
 	margin: 0;
 }
 
-div#content {
+div.content {
 	
 	position:absolute;
 	top: 20vh;
@@ -17,6 +17,32 @@ div#content {
 	padding-right:20vw;
 	overflow: scroll;
 	box-sizing: border-box;
+	left: 0;
+}
+
+div.anim {
+	transition: width 0.5s, left 0.5s, opacity 0.5s, top 0.5s;
+	opacity: 1;	
+}
+
+div.anim.left {
+	left: -100vw !important;
+	opacity: 0;
+}
+
+div.anim.right {
+	left: 100vw !important;
+	opacity: 0;
+}
+
+div.anim.top {
+	top: -100vh !important;
+	opacity: 0;
+}
+
+div.anim.bottom {
+	top: 100vh !important;
+	opacity: 0;
 }
 
 
@@ -110,6 +136,17 @@ div.loginform button {
 	
 } 
 
+@media only screen and (max-width: 500px) {
+	div#content {
+		
+		padding-left:10px;
+		padding-right:10px;
+		
+	}
+
+
+}
+
 @media only screen and (max-width: 400px) {
 	div#content {
 		
@@ -132,5 +169,53 @@ div.loginform button {
 		
 	}
 
+}
 
+div.amlform1 {
+	color: black;
+	background-color: #CCC;
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+	border-color: black;
+	opacity: 0.9;
+}
+div.amlform1 label {
+	width:100%;
+	display: block;
+	position:relative;
+	min-height: 2em;
+	box-sizing: border-box;
+	padding-right: 65%;
+	text-align: right;
+	padding-top: 0.2em;
+	
+}
+
+div.amlform1 label input,div.amlform1 label select {
+	position: absolute;
+	left: 40%;
+	top: 0;
+	width: 50%;
+	max-width: 300px;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.formnote {
+	font-size: smaller;
+	margin-left: 40%;
+	margin-right: auto;
+	max-width: 300px;
+	width: 50%;		
+}
+.bottomnav {
+	text-align: center;
+}
+
+.bottomnav button {
+	width:30%;
+	margin-left:10px;
+	margin-right: 10px;
+	margin-top: 30px;
 }

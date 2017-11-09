@@ -5,6 +5,7 @@ function HttpIOGen(method, url, data, codes, hdrs) {
 		if (codes == null) hdrs = "text/plain";
 		if (typeof hdrs == "string" || codes == null) hdrs = {"Content-Type":hdrs};
 
+		if (typeof data == "object") data = JSON.stringify(data);
 		
 		var ldr = new XMLHttpRequest;
 		ldr.open(method,url);
